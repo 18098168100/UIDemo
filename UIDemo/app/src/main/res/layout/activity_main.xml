@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include android:id="@+id/title_layout1"
+        layout="@layout/title_ui_layout"
+        android:visibility="invisible"/>
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swiperereshlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.linktrust.student.uidemo.MyScrollView
+        android:id="@+id/sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include android:id="@+id/title_layout2"
+                layout="@layout/title_ui_layout"
+                android:visibility="visible"/>
+            <LinearLayout android:id="@+id/ll_contain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView android:id="@+id/jump_secondActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#00ff00"
+                    android:text="跳转到SecondActivity"
+                    android:gravity="center"
+                    android:textColor="#ffffff"/>
+
+                <TextView  android:id="@+id/jump_ProxyActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#004f00"
+                    android:text="跳转粘性Activity"
+                    android:gravity="center"/>
+
+                <TextView android:id="@+id/send_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#00fff0"
+                    android:text="发送粘性事件"
+                    android:gravity="center"/>
+
+                <TextView android:id="@+id/jump_Scroolview"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#029f00"
+                    android:gravity="center"
+                    android:text="跳转ScroolView界面"/>
+
+                <TextView android:id="@+id/jump_goole_View"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#00ffff"
+                    android:text="goole自定义View"
+                    android:gravity="center"
+                    android:textColor="#ffffff"/>
+
+                <TextView android:id="@+id/jump_Rxlifecycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#f0ff00"
+                    android:text="RxLifeCycle"
+                    android:gravity="center"/>
+
+                <TextView android:id="@+id/jump_plugin_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#00ff00"
+                    android:text="PluginActivity"
+                    android:gravity="center"/>
+
+                <TextView android:id="@+id/jump_arouter_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#ffff00"
+                    android:text="ARouterActivity"
+                    android:gravity="center"/>
+
+                <TextView android:id="@+id/jump_imageLoader_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#00ff00"
+                    android:text="图片加载框架"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#0ffff0" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="#ffff00" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.linktrust.student.uidemo.MyScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</RelativeLayout>
