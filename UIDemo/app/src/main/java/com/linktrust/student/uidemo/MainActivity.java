@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.linktrust.student.uidemo.arouter.ARouterActivity;
 import com.linktrust.student.uidemo.bean.MessageBean;
+import com.linktrust.student.uidemo.net.NetActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.jump_plugin_activity).setOnClickListener(this);
         findViewById(R.id.jump_arouter_activity).setOnClickListener(this);
         findViewById(R.id.jump_imageLoader_activity).setOnClickListener(this);
+        findViewById(R.id.jump_net_activity).setOnClickListener(this);
         scrollView.setScroll_Y(0);
         scrollView.setLl_contain(ll_contain);
         //初始化（滑动为0）时，隐藏底部头文件
@@ -229,6 +231,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(this,ARouterActivity.class));
             case R.id.jump_imageLoader_activity:
                 startActivity(new Intent(this,ImageLoaderActivity.class));
+                break;
+            case R.id.jump_net_activity:
+                startActivity(new Intent(this, NetActivity.class));
+
                 break;
             default:
                 break;

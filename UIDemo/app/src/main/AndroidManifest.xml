@@ -15,8 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round_new"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".ImageLoaderActivity"></activity>
+        <activity android:name=".net.NetActivity"></activity>
+        <activity android:name=".ImageLoaderActivity" />
         <activity android:name=".arouter.ARouterActivity" />
         <activity android:name=".PluginDemoActivity" />
         <activity android:name=".tinker.TinkerActivity" />

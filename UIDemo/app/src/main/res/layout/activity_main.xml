@@ -91,10 +91,12 @@
                     android:text="图片加载框架"
                     android:gravity="center"/>
 
-                <TextView
+                <TextView android:id="@+id/jump_net_activity"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:background="#0ffff0" />
+                    android:background="#0ffff0"
+                    android:text="网络访问框架"
+                    android:gravity="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
