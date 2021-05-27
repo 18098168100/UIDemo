@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "810612297761",
+    "firebase_url": "https://flashexpress-1510539236101.firebaseio.com",
+    "project_id": "flashexpress-1510539236101",
+    "storage_bucket": "flashexpress-1510539236101.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810612297761:android:536bb3a46797d7cf",
+        "android_client_info": {
+          "package_name": "com.flashexpress.express"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810612297761-l16vs1t3mk0j4p67jh6rlkjf5ebqlnh1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flashexpress.express",
+            "certificate_hash": "0ffb0b53a931026e71e76d851704acb21c46f306"
+          }
+        },
+        {
+          "client_id": "810612297761-hn8cmgfrebcr5ll4gv694mfu8a1caaoc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM0Pb-ERtVpRdoZEYaGEiEKg2wd2M6_ZI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "810612297761-hn8cmgfrebcr5ll4gv694mfu8a1caaoc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

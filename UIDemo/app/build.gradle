@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply from: 'map-service-json/copy-map-json.gradle'
 android {
     compileSdkVersion 30
     defaultConfig {
@@ -90,4 +91,30 @@ this.tasks.create(name: 'daviCopy') {
             }
         }
     }
+}
+
+
+task copyPhXmlTask(type: Copy) {
+    println("th_______----------------")
+    from ('src/main/res/values-en/')
+    into ('src/main/res/values/')
+    include ('strings.xml')
+}
+
+preBuild.dependsOn copyPhXmlTask
+
+
+//配置阶段开始前 监听回调
+this.beforeEvaluate {
+    println("haohai:app配置前")
+
+}
+
+// 配置阶段完成后
+this.afterEvaluate {
+    println("haohai:app配置完成后")
+}
+
+this.gradle.buildFinished {
+    println("haohai:app执行阶段执行完毕")
 }

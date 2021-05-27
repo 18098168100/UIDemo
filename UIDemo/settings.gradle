@@ -1,1 +1,2 @@
 include ':app', ':heartreelibrary', ':plaginapp', ':plaginlibrary', ':interfacemodle', ':longin', ':member'
+println("haohai:初始化阶段开始")
