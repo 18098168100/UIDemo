@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 android {
-    compileSdkVersion 28
+    compileSdkVersion 30
     defaultConfig {
         applicationId "com.linktrust.student.uidemo"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -25,9 +25,11 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
+    //noinspection GradleCompatible
     implementation 'com.android.support:design:28.0.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -43,4 +45,49 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.github.bumptech.glide:glide:4.5.0'
     implementation 'com.alibaba:fastjson:1.1.32'
+}
+
+this.getAllprojects().eachWithIndex{ Project entry, int i ->
+    println "【getAllprojects().eachWithIndex-->】遍历所有的project name ： " + entry.name
+    println "【getAllprojects().eachWithIndex-->】遍历所有的project index ： " + i
+
+}
+
+if (this.getParent() == null){
+    println "我是根project，所以我没有父project !!! "
+
+}else {
+    println "获得父project : " + this.getParent().name
+
+}
+
+if (project.plugins.hasPlugin('com.android.application')){
+    println "【project.plugins.hasPlugin】当前project存在 application插件.."
+}else {
+    println "【project.plugins.hasPlugin】当前project不存在 application插件.."
+
+}
+
+this.tasks.create(name: 'daviCopy') {
+    println "daviCopy"
+
+    doLast {
+        println "==doLast=="
+        //doLast 为 Gradle 的执行阶段
+
+        def sourceF = this.buildDir.path + '/outputs/apk'
+        def desF = '/Users/luruiqian/Desktop/1111'//自己本地的目录
+        def cmd = "mv -f ${sourceF} ${desF}"
+        //命令基础模版
+        exec { ExecSpec execSpec ->
+            try {
+                //脚本类型
+                execSpec.setExecutable('bash')
+                //命令执行
+                execSpec.args('-c', cmd)
+            } catch (Exception e) {
+                e.printStackTrace()
+            }
+        }
+    }
 }

@@ -7,7 +7,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.1'
+        classpath 'com.android.tools.build:gradle:3.6.2'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -23,4 +23,27 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+this.getAllprojects().eachWithIndex{ Project entry, int i ->
+    println "【getAllprojects().eachWithIndex-->】遍历所有的project name ： " + entry.name
+    println "【getAllprojects().eachWithIndex-->】遍历所有的project index ： " + i
+
+}
+
+if (this.getParent() == null){
+    println "我是根project !!!"
+    project('app',{Project p ->
+        println "根project中操作 : " + p.name
+    })
+    project('longin', { Project p ->
+        println "根project中操作 : " + p.name
+        //这里其实进到了app中的gradle文件里面，可以自由的操作
+    })
+
+    allprojects{
+        println "【subprojects】所有子project的配置(不包含当前的project) --> " + project.name
+    }
+
+
 }
