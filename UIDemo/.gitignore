@@ -16,3 +16,4 @@ flash_express_core
 .project
 .settings/
 .cxx
+.idea

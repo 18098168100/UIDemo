@@ -1,0 +1,56 @@
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+// 获取当前打包命令中的flavor参数 th/ph
+def getCurrentFlavor() {
+    Gradle gradle = getGradle()
+    String tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
+    Pattern pattern
+    if (tskReqStr.contains("assemble"))
+        pattern = Pattern.compile("assemble(\\w+)(Release|Debug)")
+    else
+        pattern = Pattern.compile("generate(\\w+)(Release|Debug)")
+
+    Matcher matcher = pattern.matcher(tskReqStr)
+
+    if (matcher.find()) {
+        return matcher.group(1).toLowerCase()
+    } else {
+        println "NO MATCH FOUND"
+        return ""
+    }
+}
+
+// map 相关的json copy到打包环境下
+task copyMapJsonTask(type: Copy) {
+    Gradle gradle = getGradle()
+    if (gradle.getStartParameter().taskNames.size() > 0) { // 编译
+        def currentFlavor = getCurrentFlavor()
+        from('map-service-json') {
+            include "*${currentFlavor}.json"
+        }
+
+        into "."
+        rename { String fileName ->
+            fileName.replace("-${currentFlavor}", "")
+        }
+    }
+}
+
+task copyPhXmlTask1(type: Copy) {
+    println("Th_______----------------")
+    from ('src/main/res/values-en/')
+    into ('src/main/res/values/')
+    include ('strings.xml')
+}
+
+preBuild.dependsOn copyPhXmlTask1
+//task copyThXmlTask(type: Copy) {
+//    println("Th_______----------------")
+//    from ('src/main/res/values-th-rTH/')
+//    into ('src/main/res/values/')
+//    include ('strings.xml')
+//}
+
+
+//preBuild.dependsOn copyMapJsonTask
