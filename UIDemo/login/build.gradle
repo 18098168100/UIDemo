@@ -53,3 +53,19 @@ println "当前根工程的目录 : " + getRootDir().getAbsoluteFile()
 println "当前工程build : " + getBuildDir().getAbsoluteFile()
 println "当前工程的路径 : " + getProjectDir().getAbsoluteFile()
 println "文件定位，使用当前工程的目录的build.gradle内容 : " + fileTxt('build.gradle')
+
+
+//配置阶段开始前 监听回调
+this.beforeEvaluate {
+    println("haohai:login配置前")
+
+}
+
+// 配置阶段完成后
+this.afterEvaluate {
+    println("haohai:login配置完成后")
+}
+
+this.gradle.buildFinished {
+    println("haohai:login执行阶段执行完毕")
+}

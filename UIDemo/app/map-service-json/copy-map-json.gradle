@@ -44,13 +44,19 @@ task copyPhXmlTask1(type: Copy) {
     include ('strings.xml')
 }
 
-preBuild.dependsOn copyPhXmlTask1
+//preBuild.dependsOn copyPhXmlTask1
+//copyPhXmlTask1.execute()
+
 //task copyThXmlTask(type: Copy) {
 //    println("Th_______----------------")
 //    from ('src/main/res/values-th-rTH/')
 //    into ('src/main/res/values/')
 //    include ('strings.xml')
 //}
-
+task daviTask1{
+    println '============start 定义================'
+    println '【task的定义】【直接task函数创建法】i am daviTask1'
+    println '============end 定义================'
+}
 
 //preBuild.dependsOn copyMapJsonTask
