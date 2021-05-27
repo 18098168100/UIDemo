@@ -14,6 +14,7 @@ android {
         //设置分包配置
         multiDexKeepFile file('multidex-config.txt')
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        println("haohai:测试rebase")
 
     }
     buildTypes {
