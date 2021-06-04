@@ -37,12 +37,6 @@ task copyMapJsonTask(type: Copy) {
     }
 }
 
-task copyPhXmlTask1(type: Copy) {
-    println("Th_______----------------")
-    from ('src/main/res/values-en/')
-    into ('src/main/res/values/')
-    include ('strings.xml')
-}
 
 //preBuild.dependsOn copyPhXmlTask1
 //copyPhXmlTask1.execute()
@@ -59,4 +53,48 @@ task daviTask1{
     println '============end 定义================'
 }
 
-//preBuild.dependsOn copyMapJsonTask
+/**
+ * 泰国版本
+ */
+task copyThXmlTask(type: Copy) {
+    println("th_______----------------")
+    from ('src/main/res/values-th/')
+    into ('src/main/res/values/')
+    include ('strings.xml')
+}
+
+/**
+ * 菲律宾版本
+ */
+task copyPhXmlTask(type: Copy) {
+    println("ph_____----------------")
+    from ('src/main/res/values-en/')
+    into ('src/main/res/values/')
+    include ('strings.xml')
+}
+
+preBuild.dependsOn copyMapJsonTask
+
+
+/**
+ * 复制对应国家的翻译文件
+ */
+task copyJsonTask(type: Copy) {
+    Gradle gradle = getGradle()
+    if (gradle.getStartParameter().taskNames.size() > 0) { // 编译
+        def currentFlavor = getCurrentFlavor()
+        if (currentFlavor == "th"){
+            println("th_______----------------")
+            from ('src/main/res/values-th/')
+            into ('src/main/res/values/')
+            include ('strings.xml')
+        }else {
+            println("ph_____----------------")
+            from ('src/main/res/values-en/')
+            into ('src/main/res/values/')
+            include ('strings.xml')
+        }
+    }
+}
+
+project.preBuild.dependsOn copyJsonTask

@@ -1,3 +1,6 @@
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
 apply plugin: 'com.android.application'
 apply from: 'map-service-json/copy-map-json.gradle'
 android {
@@ -18,9 +21,36 @@ android {
 
     }
     buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "default"
+
+    //渠道Flavors
+    productFlavors {
+        th {
+            dimension "default"
+//            resValue 'string', 'app_name', "Flash Kit"
+            versionCode 111
+            versionName "4.5.7"
+            //getGradle.preBuild.dependsOn copyPhXmlTask
+        }
+
+        ph {
+            dimension "default"
+//            resValue 'string', 'app_name', "Flash Kit(Philippines)"
+            versionCode 1
+            versionName "1.0.0"
+            //getGradle.preBuild.dependsOn copyThXmlTask
+
         }
     }
 }
@@ -95,14 +125,9 @@ this.tasks.create(name: 'daviCopy') {
 }
 
 
-task copyPhXmlTask(type: Copy) {
-    println("th_______----------------")
-    from ('src/main/res/values-en/')
-    into ('src/main/res/values/')
-    include ('strings.xml')
-}
 
-preBuild.dependsOn copyPhXmlTask
+
+//preBuild.dependsOn copyPhXmlTask
 
 
 //配置阶段开始前 监听回调
@@ -119,3 +144,26 @@ this.afterEvaluate {
 this.gradle.buildFinished {
     println("haohai:app执行阶段执行完毕")
 }
+
+ class TestPlugin_th implements Plugin<Project>{
+
+    @Override
+    void apply(Project project){
+        println "task----th 运行成功了"
+        //project.preBuild.dependsOn copyThXmlTask
+
+    }
+}
+
+ class TestPlugin_ph implements Plugin<Project>{
+
+
+     @Override
+    void apply(Project project){
+        println "task----ph 运行成功了"
+         //project.preBuild.dependsOn copyPhXmlTask
+
+     }
+}
+
+

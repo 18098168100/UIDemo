@@ -1,3 +1,4 @@
+
 apply plugin: 'com.android.application'
 
 def fileTxt(String p){
@@ -69,3 +70,4 @@ this.afterEvaluate {
 this.gradle.buildFinished {
     println("haohai:login执行阶段执行完毕")
 }
+
